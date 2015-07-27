@@ -6,13 +6,15 @@ require 'sinatra/base'
 class Music < Sinatra::Base
 
     register Sinatra::CrossOrigin 
+
     def music_data(title, release_year, artist)
-    {:title => title.to_s, :release_year => release_year.to_s, :artist => artist.to_s}.to_json
+      {:title => title.to_s, :release_year => release_year.to_s, :artist => artist.to_s}.to_json
     end 
 
     get '/' do 
       'Welcome to the music API! To find a song type: /api/song-name' 
     end 
+
     get '/api/:name' do 
         cross_origin 
         @name = params[:name]
